@@ -15,8 +15,49 @@
         <h1>Plazo Fijo Calculator</h1>
     </header>
     <main class="bg-success bg-gradient p-2 text-white bg-opacity-50">
-        <h2>Calculá tu Plazo Fijo ahora!</h2>
-        <h3>Simplemente completa los campos permitidos</h3>
+        <h2>Simulá tu Plazo Fijo en Pesos</h2>
+        <h4>Simplemente completa los campos permitidos, seleccioná tu provincia y Vualá!!</h4>
+        <br>
+        <article class="container-fluid d-flex justify-content-center">
+            <form id="formulario" class="row m-3 d-flex justify-content-center">
+                <div class="col-8">
+                    <input id="monto" type="number" placeholder="Monto a invertir" class="form-control">
+                </div>
+                <div class="col-8">
+                    <input id="plazo" type="number" placeholder="Plazo en dias" class="form-control">
+                </div>
+                <br>
+                <div class="d-flex justify-content-center">
+                    <button id="miBoton" class="btn btn-primary m-3" type="submit" value="Calcular"> Calcular </button>
+                    <input class="btn btn-secondary m-3" type="reset" value="Borrar">
+                </div>
+            </form>
+        </article>
+        <div id="Resultado">
+            <table class="table table-success table-striped">
+                <thead>
+                    <tr>
+                      <th scope="col">Capital</th>
+                      <th scope="col">Tasa</th>
+                      <th scope="col">Plazo</th>
+                      <th scope="col">Interes</th>
+                      <th scope="col">Total Obtenido</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tablabody">
+                <!-- Resultados de la inversion -->
+                  </tbody>
+              </table>            
+        </div>
+        <hr>
+        <div class="lh-1">
+            <h7 class="fw-light"> El uso de esta herramienta no implica celebrar contrato alguno con Nosotros. La exhibición de los productos, servicios o información financiera que se brinda a través de la misma, sólo tiene carácter informativo y orientativo para el interesado respecto de los depósitos a plazo fijo que se realicen por este canal.
+            <br>
+            En caso de ser deudor de financiaciones previstas en el marco de la emergencia sanitaria dispuesta mediante el Decreto 260/2020 a una tasa de hasta el 24%, las operaciones efectuadas quedarán sujetas a verificación, reservándose el Banco el derecho a modificar la tasa de constitución, en virtud de lo dispuesto en la comunicación A 7027 del BCRA.
+            <br>
+            Niveles de Tasas para sector privado. Hasta $10.000.000 solo personas humanas (total acumulado de depósitos en Inversiones a Plazo)
+            </h7>
+        </div>
     </main>
     <footer>
         <hr>

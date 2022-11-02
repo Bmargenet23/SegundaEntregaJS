@@ -1,5 +1,71 @@
 //Bienvenida
 
+let montoInversion = document.getElementById("monto");
+let plazoInversion = document.getElementById("plazo");
+let provinciaSeleccionada = document.getElementById("provincia");
+let formulario = document.getElementById("formulario");
+let tasa;
+let interes;
+
+//Determinacion de tasa a tomar
+
+
+//Validacion de formulario completo
+formulario.addEventListener("submit",validar);
+
+function validar(e){
+    if((montoInversion.value=="")||(plazoInversion.value=="")){
+        e.preventDefault();
+        alert("Ingrese Monto y Plazo válidos");
+    }
+}
+
+//Funcion para generar el calculo
+
+let calculo = document.getElementById("miBoton");
+calculo.addEventListener("click", () => {
+    if (montoInversion.value<=10000){
+        tasa=30;
+    }
+    else{
+        tasa=35;
+    }
+    let nroMonto= Number(montoInversion.value);
+    let nroPlazo= Number(plazoInversion.value);
+    interes = calcularInteres(nroMonto,tasa,nroPlazo);
+    interesOk = interes.toFixed(2);
+    total= calcularTotal(nroMonto,interes)
+    totalOk= total.toFixed(2);
+    total = calcularTotal (nroMonto,interes);
+    console.log(calcularInteres(nroMonto,tasa,nroPlazo));
+    console.log(calcularTotal(nroMonto,interes));
+    console.log(tasa);
+    console.log(interesOk);
+    document.getElementById("tablabody").innerHTML += `
+        <tr>
+        <th scope="row">$${nroMonto}</th>
+        <td>${tasa}%</td>
+        <td>${nroPlazo} dias</td>
+        <td>$${interesOk}</td>
+        <td>$${totalOk}</td>  
+        </tr>`;
+}    
+)
+function calcularInteres(montoInv,laTasa,plazoInv) {
+    return ((montoInv * (laTasa / 100)) * (plazoInv / 365));
+}
+
+function calcularTotal(nroMontox,interesx) {
+    return (nroMontox + interesx);
+}
+
+// let interes= calcularInteres (tiempo, capital, tasa);
+
+// let inversionTotal= (calcularTotal (montoInve,laTasaInve));
+
+
+
+/*
 let nombre =prompt("Ingrese su nombre completo.");
 let edad = parseInt(prompt("Hola "+nombre+", Indique su edad para continuar."));
 
@@ -73,3 +139,5 @@ let inversionTotal= (total (monto, interes));
 
 
 alert("Usted invertirá $"+monto+" y en "+tiempo+" dias logrará una suma total de "+Math.round(inversionTotal)+".")
+
+*/
