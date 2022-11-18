@@ -21,8 +21,10 @@
     </header>
     <main class="p-2 text-light bg-opacity-50">
         <h2 class="sombraTexto">Simulá tu Plazo Fijo en Pesos</h2>
-        <h4 class="sombraTexto">Simplemente completa los campos permitidos, seleccioná tu provincia y Vualá!!</h4>
+        <h4 class="sombraTexto">Simplemente completa los campos permitidos y Vualá!!</h4>
         <br>
+        <article id="horario" class="row  justify-content-center p-3">
+        </article>  
         <article class="container-fluid d-flex justify-content-center">
             <form id="formulario" class="row m-3 d-flex justify-content-center">
                 <div class="col-8">
@@ -34,7 +36,7 @@
                 <br>
                 <div class="d-flex justify-content-center">
                     <button id="miBoton" class="btn btn-primary m-3 shadow" type="submit" value="Calcular"> Calcular </button>
-                    <input class="btn btn-secondary m-3 shadow" type="reset" value="Borrar">
+                    <button id="resetear" class="btn btn-secondary m-3 shadow" type="reset" value="Borrar">Borrar</button>
                 </div>
             </form>
         </article>
@@ -70,6 +72,8 @@
         <p>Desarrollado por BGM</p>
     </footer>
     <script src="js/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.1.0/build/global/luxon.min.js"></script>
     <script src="contenido.js"></script>
+    
 </body>
 </html> 

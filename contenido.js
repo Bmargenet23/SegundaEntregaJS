@@ -59,6 +59,13 @@ function calcularTotal(nroMontox,interesx) {
     return (nroMontox + interesx);
 }
 
+let reseteo = document.getElementById("resetear");
+reseteo.addEventListener("click", () => {
+    //Eliminar los conceptos de la tabla
+document.getElementById("tablabody").innerHTML="";
+}
+)
+
 //Eleccion de modo pantalla por parte del usuario
 //localStorage.setItem("modo",modo);
 let principal = document.getElementById("principal");
@@ -92,3 +99,9 @@ botonModo.onclick = () => {
     }
     localStorage.setItem("modo",modo);
 }
+
+
+const DateTime = luxon.DateTime;
+const inicio = DateTime.now();
+const mostrarHora = document.getElementById("horario")
+mostrarHora.innerHTML = `La fecha y hora actual es ${inicio.toLocaleString(DateTime.DATETIME_FULL)}`;
