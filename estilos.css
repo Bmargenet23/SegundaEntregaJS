@@ -3,3 +3,22 @@
     /* display:none */
 }
 
+.sombraTexto{
+    text-shadow: 0.5rem 0.5rem 5px black;
+}
+
+.blue{
+    background-color:  #060875;
+    color: whitesmoke;
+    padding: 0.5rem;
+}
+
+.green{
+    background-color: #198754;
+    color: whitesmoke;
+    padding: 0.5rem;
+}
+
+a{
+    text-decoration: none;
+}

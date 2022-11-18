@@ -7,23 +7,23 @@ let formulario = document.getElementById("formulario");
 let tasa;
 let interes;
 
-//Determinacion de tasa a tomar
-
 
 //Validacion de formulario completo
 formulario.addEventListener("submit",validar);
 
 function validar(e){
     if((montoInversion.value=="")||(plazoInversion.value=="")){
-        e.preventDefault();
+        // e.preventDefault();
         alert("Ingrese Monto y Plazo válidos");
     }
+    e.preventDefault(); 
 }
 
 //Funcion para generar el calculo
 
 let calculo = document.getElementById("miBoton");
 calculo.addEventListener("click", () => {
+    //Determinacion de tasa a tomar
     if (montoInversion.value<=10000){
         tasa=30;
     }
@@ -41,7 +41,7 @@ calculo.addEventListener("click", () => {
     console.log(calcularTotal(nroMonto,interes));
     console.log(tasa);
     console.log(interesOk);
-    document.getElementById("tablabody").innerHTML += `
+    document.getElementById("tablabody").innerHTML = `
         <tr>
         <th scope="row">$${nroMonto}</th>
         <td>${tasa}%</td>
@@ -59,85 +59,36 @@ function calcularTotal(nroMontox,interesx) {
     return (nroMontox + interesx);
 }
 
-// let interes= calcularInteres (tiempo, capital, tasa);
+//Eleccion de modo pantalla por parte del usuario
+//localStorage.setItem("modo",modo);
+let principal = document.getElementById("principal");
+let botonModo = document.getElementById("mode");
+let modo = localStorage.getItem("modo");
 
-// let inversionTotal= (calcularTotal (montoInve,laTasaInve));
-
-
-
-/*
-let nombre =prompt("Ingrese su nombre completo.");
-let edad = parseInt(prompt("Hola "+nombre+", Indique su edad para continuar."));
-
-if(edad>=18){
-    alert("Bienvenido "+nombre+" es mayor de edad, puede continuar.");
+if(modo != null){
+    if(modo == "blue"){
+        document.body.className = modo;
+        principal.className="container-fluid blue bg-gradient"+modo;
+        botonModo.innerText="Green Mode";
+    }
 }else{
-    alert("Lo lamentamos "+nombre+" para ingresar al sitio debes ser mayor de edad.");
+    modo = "green";
 }
 
-//Calculo de plazo fijo
-
-let tiempo=parseInt(prompt("Para poder simular su plazo fijo, ingrese cantidad de dias:"));
-let monto=parseInt(prompt("Ahora ingrese el monto:"));
-let tasa;
-
-if (monto<=10000){
-    tasa=30;
-}
-else{
-    tasa=35;
-}
-
-// Provincia de Santa Fe Imnpuesto a los sellos 1%o
-// provincia de San Juan Impuesto a los sellos 0,9%o
-
-class SelladoProvincial{
-    constructor(provincia,alicuota){
-        this.provincia = provincia.toUpperCase();
-        this.alicuota = parseFloat(alicuota);
+//evento del boton
+botonModo.onclick = () => {
+    if(modo == "green"){
+        document.body.className="blue";
+        principal.classList.remove("green");
+        principal.classList.add("blue");
+        botonModo.innerText="Green Mode";
+        modo = "blue";
+    }else{
+        document.body.className="green";
+        principal.classList.remove("blue");
+        principal.classList.add("green");
+        botonModo.innerText="Blue Mode";
+        modo = "green";
     }
-    mostrarProvincia(){
-        return this.provincia;
-        return this.alicuota;
-    }
+    localStorage.setItem("modo",modo);
 }
-
-const provincia1 = new SelladoProvincial("SANTA FE",0.001);
-const provincia2 = new SelladoProvincial("SAN JUAN",0.0009);
-
-console.log(provincia1.provincia);
-console.log(provincia2.provincia);
-console.log(provincia1.alicuota);
-console.log(provincia2.alicuota);
-
-let sellado=(prompt("En que provincia te encontras?"));
-let sellado2= sellado.toLocaleUpperCase();
-let alicuotaSellado=0;
-
-if(sellado2 === provincia1.provincia){
-    alicuotaSellado = provincia1.alicuota;
-}
-else if (sellado2 === provincia2.provincia){
-    alicuotaSellado = provincia2.alicuota;
-}
-else{
-    
-}
-
-console.log=(alicuotaSellado);
-
-function plazoFijo (tiempo, monto, tasa, alicuotaSellado){
-    return (monto*(tasa/100)*(tiempo/365)-(monto*alicuotaSellado));
-}
-function total (monto, interes) {return (monto + interes)};
-
-let interes=plazoFijo (tiempo, monto, tasa, alicuotaSellado);
-
-alert("Su plazo fijo le dará un interes de "+Math.round(interes));
-
-let inversionTotal= (total (monto, interes));
-
-
-alert("Usted invertirá $"+monto+" y en "+tiempo+" dias logrará una suma total de "+Math.round(inversionTotal)+".")
-
-*/
